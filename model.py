@@ -1,6 +1,5 @@
 """Models for coin watch app."""
 
-# from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -28,13 +27,7 @@ class Coin(db.Model):
     __tablename__ = "coins"
 
     coin_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    coin_name = db.Column(db.String, nullable = False)
-    coin_code = db.Column(db.String, nullable = False)
-    price = db.Column(db.String, nullable = False)
-    market_cap = db.Column(db.String, nullable = False)
-    24h_change = db.Column(db.String, nullable = False)
-    24h_volume = db.Column(db.String, nullable = False)
-    all_time_high = db.Column(db.String, nullable = False)
+    name = db.Column(db.String, nullable = False)
 
 
     def __repr__(self):
