@@ -1,0 +1,56 @@
+.navbar {
+	background-color: #57c1b3;
+	color: white;
+	border-radius: 0px;
+	height: 100px;
+}
+
+#coin-logo, #coin-logo:hover, .navbar-dark .navbar-brand {
+	color: white;
+	font-size: xx-large
+}
+
+.navbar-nav>li>a, .navbar-dark .navbar-nav .nav-link {
+	color: white;
+	font-size: large;
+}
+
+#navbarSupportedContent {
+	text-align: center;
+	margin-inline: 150px;
+}
+
+li {
+	margin: 30px
+}
+
+#coinTable {
+	font-size: medium;
+	text-align: center;
+	align-items: center;
+}
+.container > .row > .table tr.active th {
+	background-color: grey;
+}
+
+h1 {
+	font-size: larger;
+	text-align: center;
+}
+
+p {
+	font-size: large;
+	text-align: center;
+}
+
+#column-name {
+	font-size: larger;
+	text-align: center;
+}
+
+.btn {
+	background: transparent;
+	border: none;
+	font-size: 88px;
+	color: rgba(216, 211, 211, 0.61);
+}
