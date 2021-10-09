@@ -1,9 +1,8 @@
 
 function Homepage(props) {
   $.get('/api', response => {
-    let coinsArray = response.data
+    let coinsArray = response.data;
     console.log(coinsArray)
-    console.log(coinsArray[0].name)
     buildTable(coinsArray)
   
   $('#search-input').on('keyup', function() {
@@ -13,16 +12,26 @@ function Homepage(props) {
   })
 
   $('th').on('click', function(){
-    let column = $(this).data('column')
-    let order = $(this).data('order')
+    let column = $(this).data('column');
+    console.log("col name", column)
+    let order = $(this).data('order');
+    let text = $(this).html()
+    text = text.substring(0, text.length-1)
  
     if (order=='desc') {
       $(this).data('order', 'asc')
-      coinsArray=coinsArray.sort((a,b) => a[(column)] > b[(column)] ? 1 : -1)
+      console.log('des')
+      coinsArray = coinsArray.sort((a,b) => Number(a[(column)]) - Number(b[(column)]))
+      text += "&#9660;"
     } else {
       $(this).data('order', 'desc')
-      coinsArray=coinsArray.sort((a,b) => a[(column)] < b[(column)] ? 1 : -1)
+      console.log('esc')
+
+      coinsArray = coinsArray.sort((a,b) => Number(b[(column)]) - Number(a[(column)]))
+      text += "&#9650;"
+
     }
+    $(this).html(text)
     buildTable(coinsArray)
   })
 })
@@ -45,20 +54,20 @@ function Homepage(props) {
       <br></br>
 
       <table className="table table-striped">
-        <tr id="column-name" className="active">
-          <th></th>
-          <th></th>
-          <th>Coin</th>
-          <th data-column="price" data-order="desc">Price</th>
-          <th data-column="marketcap" data-order="desc">Market Cap</th>
-          <th data-column="volume" data-order="desc">Volume</th>
-          <th data-column="high" data-order="desc">All Time High</th>
-          <th data-column="supply" data-order="desc">Circulating Supply</th>
-          <th data-column="change" data-order="desc">24H Change</th>
-        </tr>
-
-          <tbody id="coinTable">
-
+        <tbody>
+          <tr id="column-name" className="active">
+            <th></th>
+            <th></th>
+            <th>Coin</th>
+            <th data-column="price" data-order="desc">Price &#9650;</th>
+            <th data-column="market_cap" data-order="desc">Market Cap &#9650;</th>
+            <th data-column="volume" data-order="desc">Volume</th>
+            <th data-column="high" data-order="desc">All Time High &#9650;</th>
+            <th data-column="circulating_supply" data-order="desc">Circulating Supply</th>
+            <th data-column="price_change_pct" data-order="desc">24H Change</th>
+          </tr>
+        </tbody>
+        <tbody id="coinTable">
           </tbody>
       </table>
       </div>
