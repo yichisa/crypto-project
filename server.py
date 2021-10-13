@@ -28,6 +28,24 @@ def homepage():
     """View homepage."""
 
     return render_template("homepage.html")
+
+@app.route("/login")
+def login():
+    """View loginpage."""
+
+    return render_template("login.html")
+
+@app.route("/register")
+def register():
+    """Register an account."""
+
+    return render_template("register.html")
+
+@app.route("/watchlist")
+def watchlist():
+    """View watchlist."""
+
+    return render_template("watchlist.html")
     
 
 @app.route("/coin/<coin_id>")
@@ -48,11 +66,7 @@ def make_api_call():
     response = {
         "data":requests.get(url).json()
     }
-
     return response
-    # resp = requests.get(url=url)
-    # data = resp.json()
-    # return data 
 
 
 
@@ -65,7 +79,7 @@ def all_users():
     return render_template("all_users.html", users=users)
 
 
-@app.route("/users", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register_user():
     """Create a new user."""
 
@@ -80,15 +94,6 @@ def register_user():
         flash("Account created! Please log in.")
 
     return redirect("/")
-
-
-@app.route("/users/<user_id>")
-def show_user(user_id):
-    """Show details on a particular user."""
-
-    user = crud.get_user_by_id(user_id)
-
-    return render_template("user_details.html", user=user)
 
 
 @app.route("/login", methods=["POST"])

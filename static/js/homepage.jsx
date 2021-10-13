@@ -2,7 +2,6 @@
 function Homepage(props) {
   $.get('/api', response => {
     let coinsArray = response.data;
-    console.log(coinsArray)
     buildTable(coinsArray)
   
   $('#search-input').on('keyup', function() {
@@ -11,21 +10,23 @@ function Homepage(props) {
     buildTable(data)
   })
 
+  $('#fav-list').on('click', function() {
+    let data = favTable(coinsArray)
+    buildTable(data)
+  })
+
   $('th').on('click', function(){
     let column = $(this).data('column');
-    console.log("col name", column)
     let order = $(this).data('order');
     let text = $(this).html()
     text = text.substring(0, text.length-1)
  
     if (order=='desc') {
       $(this).data('order', 'asc')
-      console.log('des')
       coinsArray = coinsArray.sort((a,b) => Number(a[(column)]) - Number(b[(column)]))
       text += "&#9660;"
     } else {
       $(this).data('order', 'desc')
-      console.log('esc')
 
       coinsArray = coinsArray.sort((a,b) => Number(b[(column)]) - Number(a[(column)]))
       text += "&#9650;"
@@ -40,23 +41,23 @@ function Homepage(props) {
       
       <div className="container">
         <br></br>
-        <h1>Top 100 Cryptocurreny prices</h1>
+        <h1>Top 100 Cryptocurreny Prices</h1>
         <p>Top Coins by Market Cap</p>
         <br></br>
         <br></br>
       
       <div className="row">
         <div className="col">
-            <input id="search-input" className="form-control" type="text"></input>
+            <input id="search-input" className="form-control" type="text" placeholder="Search..."></input>
         </div>
       </div>
       <br></br>
       <br></br>
 
-      <table className="table table-striped">
+      <table className="table table-striped table-dark">
         <tbody>
           <tr id="column-name" className="active">
-            <th></th>
+            <th id="fav-list">&#9825;</th>
             <th></th>
             <th>Coin</th>
             <th data-column="price" data-order="desc">Price &#9650;</th>
@@ -68,9 +69,13 @@ function Homepage(props) {
           </tr>
         </tbody>
         <tbody id="coinTable">
-          </tbody>
+        </tbody>
       </table>
       </div>
+      <script>
+        
+      </script>
+
     </React.Fragment>
   );
   }
@@ -92,13 +97,14 @@ function Homepage(props) {
   }
 
   function buildTable(data) {
-    let table = document.getElementById('coinTable')
+    console.log('buildtable', data)
+    let table = document.getElementById('coinTable');
 
     table.innerHTML = ''
 
     for (let i=0; i< data.length; i++) {
       const row = `<tr>
-                    <td><Button id="like-button" class="btn"><i class="far fa-heart" style="font-size: 1.5em;"></i></Button></td>
+                    <td><Button onclick="Toggle(${i})" id="like-button${i}" class="btn" style="color:grey"><i class="fa fa-heart" style="font-size: 2em;"></i></Button></td>
                     <td><img src= ${data[i].logo_url} style="height:30px; width:auto;"></td>
                     <td style="text-align:left"> ${data[i].symbol}   |   ${data[i].name}</td>
                     <td>$ ${parseFloat(data[i].price).toFixed(2)}</td>
@@ -112,9 +118,26 @@ function Homepage(props) {
     }
   }
 
-  ReactDOM.render(<Homepage />, document.querySelector('#app'));
-
-
-
-
+  function Toggle(i) {
   
+    let likeButton = document.getElementById(`like-button${i}`)
+    if (likeButton.style.color == "grey") {
+      likeButton.style.color = "red"}
+    else{
+      likeButton.style.color = "grey"
+    }
+  }
+
+  function favTable(data){
+    let favData = [];
+    
+    for(let i=0; i<data.length; i++){
+      let likeButton = document.getElementById(`like-button${i}`);
+      if (likeButton.style.color == "red"){
+        favData.push(data[i])
+      }
+    }
+    return favData
+  }
+
+  ReactDOM.render(<Homepage />, document.querySelector('#app'));
