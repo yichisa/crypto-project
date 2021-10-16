@@ -52,7 +52,7 @@ def watchlist():
 def show_coin(coin_id):
     """Show details on a particular coin."""
 
-    coin = crud.get_coin_id(coin_id)
+    coin = crud.get_coin_by_id(coin_id)
 
     return render_template("coin_details.html", coin=coin)
 
@@ -77,6 +77,14 @@ def all_users():
     users = crud.get_users()
 
     return render_template("all_users.html", users=users)
+
+@app.route("/users/<user_id>")
+def show_user(user_id):
+    """Show details on a particular user."""
+
+    user = crud.get_user_by_id(user_id)
+
+    return render_template("user_details.html", user=user)
 
 
 @app.route("/register", methods=["POST"])
@@ -114,26 +122,24 @@ def process_login():
     return redirect("/")
 
 
-# @app.route("/movies/<movie_id>/ratings", methods=["POST"])
-# def create_rating(movie_id):
-#     """Create a new rating for the movie."""
+@app.route("/coins/<coin_id>/ratings", methods=["POST"])
+def create_favorite(coin_id):
+    """Create a new favorite for the coin."""
 
-#     logged_in_email = session.get("user_email")
-#     rating_score = request.form.get("rating")
+    logged_in_email = session.get("user_email")
+    favorite_selection = request.form.get("favorite")
 
-#     if logged_in_email is None:
-#         flash("You must log in to like a coin.")
-#     elif not rating_score:
-#         flash("Error: you didn't select a score for your rating.")
-#     else:
-#         user = crud.get_user_by_email(logged_in_email)
-#         coin = crud.get_coin_by_id(coin_id)
+    if logged_in_email is None:
+        flash("You must log in to like a coin.")
+    else:
+        user = crud.get_user_by_email(logged_in_email)
+        coin = crud.get_coin_by_id(coin_id)
 
-#         crud.create_rating(user, movie, int(rating_score))
+        crud.create_favorite(user, coin, favorite_selection)
 
-#         flash(f"You added this coin {} to your Watchlist.")
+        flash(f"You added this coin to your favorite list.")
 
-#     return redirect(f"/movies/{movie_id}")
+    return redirect(f"/coins/{coin_id}")
 
 
 if __name__ == "__main__":

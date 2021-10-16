@@ -8,9 +8,12 @@ from datetime import datetime
 import crud
 import model
 import server
+import requests
 
-os.system("dropdb users")
-os.system("createdb users")
+API_KEY = os.environ['Nomics_API_KEY']
+
+os.system("dropdb favorites")
+os.system("createdb favorites")
 
 model.connect_to_db(server.app)
 model.db.create_all()
@@ -22,5 +25,24 @@ for n in range(10):
     password = "test"
 
     user = crud.create_user(email, password)
+
+# seed my coin table;
+# coin_data = requests.get("http://localhost:5000/api").json()
+url = f"https://api.nomics.com/v1/currencies/ticker?key={API_KEY}&interval=1d,30d&convert=EUR&per-page=100&page=1"
+coin_data = requests.get(url).json()
+
+coins_in_db = []
+
+for coin in coin_data:
+    name = coin["name"]
+
+    db_coin = crud.create_coin(name)
+    coins_in_db.append(db_coin)
+
+print(coins_in_db)
+
+  
+
+
 
     

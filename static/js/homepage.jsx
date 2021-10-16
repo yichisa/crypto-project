@@ -10,7 +10,7 @@ function Homepage(props) {
     buildTable(data)
   })
 
-  $('#fav-list').on('click', function() {
+  $('#likes').on('click', function() {
     let data = favTable(coinsArray)
     buildTable(data)
   })
@@ -41,6 +41,7 @@ function Homepage(props) {
       
       <div className="container">
         <br></br>
+        <br></br>
         <h1>Top 100 Cryptocurreny Prices</h1>
         <p>Top Coins by Market Cap</p>
         <br></br>
@@ -50,6 +51,9 @@ function Homepage(props) {
         <div className="col">
             <input id="search-input" className="form-control" type="text" placeholder="Search..."></input>
         </div>
+        <div>
+        <button id="likes">Watchlist</button>
+        </div>
       </div>
       <br></br>
       <br></br>
@@ -57,7 +61,7 @@ function Homepage(props) {
       <table className="table table-striped table-dark">
         <tbody>
           <tr id="column-name" className="active">
-            <th id="fav-list">&#9825;</th>
+            <th></th>
             <th></th>
             <th>Coin</th>
             <th data-column="price" data-order="desc">Price &#9650;</th>
@@ -69,6 +73,8 @@ function Homepage(props) {
           </tr>
         </tbody>
         <tbody id="coinTable">
+          <form action="/coins/{{ coin.coin_id }}/favorites" method="POST">
+          </form>
         </tbody>
       </table>
       </div>

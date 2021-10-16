@@ -27,7 +27,6 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark">
-
 		<a id="coin-logo" class="navbar-brand" href="/">Live Coin Tracker</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
@@ -57,6 +56,12 @@
 		</div>
 	
 	  </nav>
+	  {% for msg in get_flashed_messages() %}
+	  <p class="flash-msg">
+		{{ msg }}
+	  </p>
+	  {% endfor %}
+
 	<!-- Include the page's content with this block. -->
 	{% block body %}
 	{% endblock %}

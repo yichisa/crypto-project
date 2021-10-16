@@ -31,38 +31,39 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
+def create_coin(name):
+    """Create and return a new coin."""
 
+    coin = Coin(name=name)
+
+    db.session.add(coin)
+    db.session.commit()
+
+    return coin
+    
 def get_coins():
     """Return all coins."""
 
     return Coin.query.all()
 
 
-def get_coin_id(coin_id):
+def get_coin_by_id(coin_id):
     """Return a coin by primary key."""
 
     return Coin.query.get(coin_id)
 
 
-# def create_favorite(user, coin, favorite):
-#     """Create and return a new favorite."""
 
-#     Wachlist = Favorite(user=user, coin=movie, favorite=favorite)
+def create_favorite(user, coin, favorite):
+    """Create and return a new favorite."""
 
-#     db.session.add()
-#     db.session.commit()
+    favorite = Favorite(user=user, coin=coin, favorite=favorite)
 
-#     return rating
+    db.session.add(favorite)
+    db.session.commit()
 
-# def create_rating(user, movie, score):
-#     """Create and return a new rating."""
+    return favorite
 
-#     rating = Rating(user=user, movie=movie, score=score)
-
-#     db.session.add(rating)
-#     db.session.commit()
-
-#     return rating
 
 
 if __name__ == "__main__":

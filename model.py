@@ -31,7 +31,7 @@ class Coin(db.Model):
 
 
     def __repr__(self):
-        return f"<Coin coin_id={self.coin_id} coin_name={self.coin_name}>"
+        return f"<Coin coin_id={self.coin_id} coin_name={self.name}>"
 
 
 class Favorite(db.Model):
