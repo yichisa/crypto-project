@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Top 100 Coins{% endblock %}
+
+{% block body %}
+
+  <div class="login-box">
+    <h1>Register</h1>
+      <div class="textbox">
+       <form action="/register" method="POST">
+         <input type="text" placeholder="first name" name="fname">
+      </div>
+      <div class="textbox">
+      <form action="/register" method="POST">
+        <input type="text" placeholder="last name" name="lname">
+      </div>
+      <div class="textbox">
+        <form action="/register" method="POST">
+          <input type="text" placeholder="username" name="username">
+      </div>
+      <div class="textbox">
+        <form action="/register" method="POST">
+          <input type="text" placeholder="email" name="email">
+      </div>
+      <div class="textbox">
+        <form action="/register" method="POST">
+          <input type="text" placeholder="password" name="password">
+      </div>
+        <input class="submit-btn" type="submit">
+  
+    </form>
+
+{% endblock %}

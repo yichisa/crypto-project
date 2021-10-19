@@ -131,3 +131,33 @@ body{
 	cursor: pointer;
 	margin: 12px;
 }
+
+.headers{
+	margin-top: 100px;
+	color: rgb(233, 227, 227);
+	text-align: center;
+}
+
+.Image {
+	max-width: 400px;
+	max-height: 300px;
+}
+
+.exchanges {
+	margin: 50px 100px;
+}
+
+.exchanges img {
+	transition: 1s;
+	padding: 20px;
+	width: 200px;
+}
+
+.exchanges img:hover {
+	filter: grayscale(100%);
+	transform: scale(1.1);
+}
+
+/* .exchanges>a {
+	flex: calc(100% / 6);
+  } */

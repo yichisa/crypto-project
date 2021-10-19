@@ -29,6 +29,18 @@ def homepage():
 
     return render_template("homepage.html")
 
+@app.route("/exchanges")
+def exchange():
+    """View exchanges."""
+
+    return render_template("exchange.html")
+
+@app.route("/glossary")
+def glossary():
+    """View glossary."""
+
+    return render_template("glossary.html")
+
 @app.route("/login")
 def login():
     """View loginpage."""
