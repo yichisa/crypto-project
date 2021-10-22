@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, flash, session, redirect, jso
 from model import connect_to_db
 import requests
 import crud
+import json
 import os
 import urllib.request
 
@@ -80,6 +81,12 @@ def make_api_call():
     }
     return response
 
+@app.route("/glossarydata")
+def glossary_data():
+
+    with open("static/glossary.json") as f:
+        glossary_data = json.loads(f.read())
+    return glossary_data
 
 
 @app.route("/users")

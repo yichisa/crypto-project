@@ -158,6 +158,37 @@ body{
 	transform: scale(1.1);
 }
 
-/* .exchanges>a {
-	flex: calc(100% / 6);
-  } */
+[data-tab-content] {
+	display: none;
+}
+
+.active[data-tab-content] {
+	display: block;
+}
+
+#tabs {
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 3px solid whitesmoke;
+	color:rgb(218, 211, 211);
+	font-size: large;
+	
+}
+
+#tab-content {
+	cursor: pointer;
+	padding: 10px;
+	color: rgb(218, 211, 211);
+}
+
+#tab:hover {
+	background-color: #AAA;
+}
+
+.tabHeader {
+	margin: 10px;
+	padding: 10px;
+}

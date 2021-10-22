@@ -72,15 +72,9 @@ function Homepage(props) {
             <th data-column="price_change_pct" data-order="desc">24H Change</th>
           </tr>
         </tbody>
-        <tbody id="coinTable">
-          <form action="/coins/{{ coin.coin_id }}/favorites" method="POST">
-          </form>
-        </tbody>
+        <tbody id="coinTable"></tbody>
       </table>
       </div>
-      <script>
-        
-      </script>
 
     </React.Fragment>
   );
