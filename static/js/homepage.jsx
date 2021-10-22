@@ -43,7 +43,7 @@ function Homepage(props) {
         <br></br>
         <br></br>
         <h1>Top 100 Cryptocurreny Prices</h1>
-        <p>Top Coins by Market Cap</p>
+        <h2>Top Coins by Market Cap</h2>
         <br></br>
         <br></br>
       

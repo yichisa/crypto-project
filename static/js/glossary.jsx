@@ -10,17 +10,33 @@ function Glossary(props) {
         <div className="container">
           <br></br>
           <h1>Crypto Glossary</h1>
-          <p>Learn the basic terminology for blockchain technology. </p>
           <br></br>
-        </div>
+          <h2>Learn the basic terminology for blockchain technology. </h2>
+          <br></br>
 
         <div>
           <ul id="tabs"></ul>
           <div id="tab-content"></div>
         </div>
+        </div>
+
       </React.Fragment>
     );
 }
+function searchGlossary(value, data){
+    let filteredData = []
+
+    for(let i=0; i<data.length; i++){
+      value = value.toLowerCase()
+      let name = data[i].name.toLowerCase()
+      let symbol = data[i].symbol.toLowerCase()
+
+      if (name.includes(value)){
+        filteredData.push(data[i])
+      }
+    }
+    return filteredData
+  }
 
 function buildTab(data) {
     let tab = document.getElementById('tabs'); 
@@ -31,29 +47,23 @@ function buildTab(data) {
     for (let i=0; i< data.length; i++) {
         const tabHeader = Object.keys(data[i])[0];
         const tabs =`<li data-tab-target="#${tabHeader}" className="tabHeader">${tabHeader}</li>`
-        // tabArray.push(`<li className="tabHeader">${tabHeader}</li>`);
         tab.innerHTML += tabs
         
         const defObj = data[i][tabHeader];
         for (const [key, value] of Object.entries(defObj)) {
             // console.log(`${key}: ${value}`);
-            const term = `<div id="${tabHeader}" data-tab-content class="active ${tabHeader}"><h2>${key}</h2><p>${value}</p></div>`;
+            const term = `<div id="${tabHeader}" data-tab-content class="active ${tabHeader}"><h3 style="font-size:3rem">${key}</h3><p>${value}</p><br></div>`;
             definition.innerHTML += term
-            // console.log(definition.innerHTML)
         }
     };
     
-    console.log("🚀 ~ file: glossary.jsx ~ line 29 ~ buildTab ~ definition", definition)
     const tabs = document.querySelectorAll('[data-tab-target]')
-    console.log('tabs---', tabs)
     const tabContents = document.querySelectorAll('[data-tab-content]')
-    console.log("🚀 ~ file: glossary.jsx ~ line 50 ~ buildTab ~ tabContents", tabContents)
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = document.querySelectorAll(tab.dataset.tabTarget);
             console.log("🚀 ~ file: glossary.jsx ~ line 55 ~ tab.addEventListener ~ tab.dataset.tabTarget", tab.dataset.tabTarget)
-            console.log("🚀 ~ file: glossary.jsx ~ line 55 ~ tab.addEventListener ~ target", target)
             tabContents.forEach(tabContents => {
                 tabContents.classList.remove('active')
             })
