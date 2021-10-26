@@ -46,13 +46,15 @@ function Homepage(props) {
         <h2>Top Coins by Market Cap</h2>
         <br></br>
         <br></br>
-      
+
+        <div id="search-and-like">
+          <button id="likes">Watchlist</button>
+          <br></br>
+          <input id="search-input" className="form-control" type="text" placeholder="Search..."></input>
+        </div>
+
       <div className="row">
         <div className="col">
-            <input id="search-input" className="form-control" type="text" placeholder="Search..."></input>
-        </div>
-        <div>
-        <button id="likes">Watchlist</button>
         </div>
       </div>
       <br></br>
@@ -106,21 +108,64 @@ function Homepage(props) {
       const row = `<tr>
                     <td><Button onclick="Toggle(${i})" id="like-button${i}" class="btn" style="color:grey"><i class="fa fa-heart" style="font-size: 2em;"></i></Button></td>
                     <td><img src= ${data[i].logo_url} style="height:30px; width:auto;"></td>
-                    <td style="text-align:left"> ${data[i].symbol}   |   ${data[i].name}</td>
+                    <td style="text-align:left; width=150px"> ${data[i].symbol}   |   ${data[i].name}</td>
                     <td>$ ${parseFloat(data[i].price).toFixed(2)}</td>
-                    <td>$ ${parseFloat(data[i].market_cap)}</td>
-                    <td>$ ${parseFloat(data[i]["1d"].volume)}</td>
+                    <td id="cap${i}">$ ${parseFloat(data[i].market_cap)}</td>
+                    <td id="vol${i}">$ ${parseFloat(data[i]["1d"].volume)}</td>
                     <td>$ ${parseFloat(data[i].high).toFixed(2)}</td>
-                    <td>$ ${parseFloat(data[i].circulating_supply)}</td>
-                    <td>${(parseFloat(data[i]['1d'].price_change_pct)*100).toFixed(2) + "%"}</td>
+                    <td id="cir${i}">$ ${parseFloat(data[i].circulating_supply)}</td>
+                    <td id="price${i}">${(parseFloat(data[i]['1d'].price_change_pct)*100).toFixed(2)+'%'}</td>
                 </tr>`
+
       table.innerHTML += row
+
+      let prices = document.getElementById(`price${i}`)
+       if (`${parseFloat(data[i]['1d'].price_change_pct)}` > 0) {
+         prices.style.color = "#4caf50"
+       } else {
+        prices.style.color = "#E3242B"
+       }
+
+      let caps = document.getElementById(`cap${i}`)
+      if (Math.abs(`${parseFloat(data[i].market_cap)}`) >= 1.0e9) {
+        caps.innerHTML ="$"+((Math.abs(`${parseFloat(data[i].market_cap)}`) / 1.0e9).toFixed(2)) + "B"
+      }
+
+      let vols = document.getElementById(`vol${i}`)
+      if (Math.abs(`${parseFloat(data[i]["1d"].volume)}`) >= 1.0e9) {
+        vols.innerHTML ="$"+((Math.abs(`${parseFloat(data[i]["1d"].volume)}`) / 1.0e9).toFixed(2)) + "B"
+      }
+      if (Math.abs(`${parseFloat(data[i]["1d"].volume)}`) >= 1.0e6 && Math.abs(`${parseFloat(data[i]["1d"].volume)}`) < 1.0e9) {
+        vols.innerHTML ="$"+((Math.abs(`${parseFloat(data[i]["1d"].volume)}`) / 1.0e6).toFixed(2)) + "M"
+      }
+
+      let cirs = document.getElementById(`cir${i}`)
+      if (Math.abs(`${parseFloat(data[i].circulating_supply)}`) >= 1.0e9) {
+        cirs.innerHTML ="$"+((Math.abs(`${parseFloat(data[i].circulating_supply)}`) / 1.0e9).toFixed(2)) + "B"
+      }
+      if (Math.abs(`${parseFloat(data[i].circulating_supply)}`) >= 1.0e6 && Math.abs(`${parseFloat(data[i].circulating_supply)}`) < 1.0e9) {
+        cirs.innerHTML ="$"+((Math.abs(`${parseFloat(data[i].circulating_supply)}`) / 1.0e6).toFixed(2)) + "M"
+      }
     }
+  }
+
+  function f_color(i=0){
+    let prices = document.getElementById(`price${i}`)
+    console.log("🚀 ~ file: homepage.jsx ~ line 130 ~ f_color ~ price", prices)
+    console.log(prices.value)
+    let el = `${parseFloat(data[i]['1d'].price_change_pct)}`;
+        if(el < 0) {
+          prices.style.color = "green";
+        } else {
+          prices.style.color = "red";
+        }
   }
 
   function Toggle(i) {
   
     let likeButton = document.getElementById(`like-button${i}`)
+    console.log(likeButton)
+
     if (likeButton.style.color == "grey") {
       likeButton.style.color = "red"}
     else{

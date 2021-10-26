@@ -1,7 +1,4 @@
 @import url(https//maxcdn.bootstrapcdn.com/font-awsome/4.7.0/css/font-awsome.min.css);
-h1 {
-	color: rgb(218, 211, 211);
-}
 
 .navbar {
 	background-color:#232227;
@@ -13,7 +10,8 @@ h1 {
 
 #coin-logo, #coin-logo:hover, .navbar-dark .navbar-brand {
 	color: rgb(218, 211, 211);
-	font-size: xx-large
+	font-size: xx-large;
+	margin: 30px
 }
 
 .navbar-nav>li>a, .navbar-dark .navbar-nav .nav-link {
@@ -40,6 +38,7 @@ li {
 h1 {
 	font-size: larger;
 	text-align: center;
+	color: rgb(218, 211, 211);
 }
 
 h2 {
@@ -51,11 +50,6 @@ h2 {
 #column-name {
 	font-size: larger;
 	text-align: center;
-}
-
-#search-input {
-	font-size: large;
-	background-color:rgb(233, 227, 227);
 }
 
 
@@ -210,3 +204,51 @@ p {
 	text-align: left;
 	line-height: 2.8;
 }
+
+#search-input {
+	position: relative;
+	font-size: large;
+	background-color:#232227;
+	border: 2px solid #4caf50;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+	height: 50px;
+	color: honeydew;
+}
+
+#likes {
+	position: relative;
+	text-align: center;
+	width: 150px;
+	padding: 10px;
+	margin: 10px;
+	font-size: 15px;
+	color: #4caf50;
+	font-weight: 400;
+	border: 2px solid #4caf50;
+	text-transform: uppercase;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 1.5s;
+	background-color:#232227;
+	height: 50px;
+}
+
+#search-and-like {
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-control {
+	color: honeydew;
+
+}
+
+/* .price {
+	color: red;
+}
+
+.price.green {
+	color: #33ff3c;
+} */
