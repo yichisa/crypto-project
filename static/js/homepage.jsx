@@ -1,19 +1,26 @@
-
 function Homepage(props) {
+  /**calling API from server API route**/
   $.get('/api', response => {
     let coinsArray = response.data;
     buildTable(coinsArray)
   
+  /**handling search bar input**/
   $('#search-input').on('keyup', function() {
     let value = $(this).val()
     let data = searchTable(value, coinsArray)
     buildTable(data)
   })
 
+  /**handling like button on click event**/
   $('#likes').on('click', function() {
     let data = favTable(coinsArray)
     buildTable(data)
   })
+
+  /**handling header on click event, 
+   * sort feature based on value
+   * returns a new table with sorted data
+   */
 
   $('th').on('click', function(){
     let column = $(this).data('column');
@@ -38,7 +45,6 @@ function Homepage(props) {
 })
   return (
     <React.Fragment>
-      
       <div className="container">
         <br></br>
         <br></br>
@@ -46,21 +52,18 @@ function Homepage(props) {
         <h2>Top Coins by Market Cap</h2>
         <br></br>
         <br></br>
-
+      
         <div id="search-and-like">
-          <button id="likes">Watchlist</button>
+        {/* {% if session.get('user_email') %} */}
+          <button id="likes" type="submit">Watchlist</button>
           <br></br>
           <input id="search-input" className="form-control" type="text" placeholder="Search..."></input>
         </div>
-
-      <div className="row">
-        <div className="col">
-        </div>
-      </div>
+        
       <br></br>
       <br></br>
 
-      <table className="table table-striped table-dark">
+      <table className="table table-striped table-dark table-hover">
         <tbody>
           <tr id="column-name" className="active">
             <th></th>
@@ -106,15 +109,15 @@ function Homepage(props) {
 
     for (let i=0; i< data.length; i++) {
       const row = `<tr>
-                    <td><Button onclick="Toggle(${i})" id="like-button${i}" class="btn" style="color:grey"><i class="fa fa-heart" style="font-size: 2em;"></i></Button></td>
-                    <td><img src= ${data[i].logo_url} style="height:30px; width:auto;"></td>
-                    <td style="text-align:left; width=150px"> ${data[i].symbol}   |   ${data[i].name}</td>
-                    <td>$ ${parseFloat(data[i].price).toFixed(2)}</td>
-                    <td id="cap${i}">$ ${parseFloat(data[i].market_cap)}</td>
-                    <td id="vol${i}">$ ${parseFloat(data[i]["1d"].volume)}</td>
-                    <td>$ ${parseFloat(data[i].high).toFixed(2)}</td>
-                    <td id="cir${i}">$ ${parseFloat(data[i].circulating_supply)}</td>
-                    <td id="price${i}">${(parseFloat(data[i]['1d'].price_change_pct)*100).toFixed(2)+'%'}</td>
+                    <td class="align-middle"><Button value=${data[i].name} onclick="Toggle(${i})" id="like-button${i}" class="btn" style="color:grey"><i class="fa fa-heart" style="font-size: 2em;"></i></Button></td>
+                    <td class="align-middle"><img src= ${data[i].logo_url} style="height:30px; width:auto;"></td>
+                    <td class="align-middle" style="text-align:left; width=100px"> ${data[i].symbol}<br> ${data[i].name}</td>
+                    <td class="align-middle">$ ${parseFloat(data[i].price).toFixed(2)}</td>
+                    <td class="align-middle" id="cap${i}">$ ${parseFloat(data[i].market_cap)}</td>
+                    <td class="align-middle" id="vol${i}">$ ${parseFloat(data[i]["1d"].volume)}</td>
+                    <td class="align-middle">$ ${parseFloat(data[i].high).toFixed(2)}</td>
+                    <td class="align-middle" id="cir${i}">$ ${parseFloat(data[i].circulating_supply)}</td>
+                    <td class="align-middle" id="price${i}">${(parseFloat(data[i]['1d'].price_change_pct)*100).toFixed(2)+'%'}</td>
                 </tr>`
 
       table.innerHTML += row
@@ -149,30 +152,27 @@ function Homepage(props) {
     }
   }
 
-  function f_color(i=0){
-    let prices = document.getElementById(`price${i}`)
-    console.log("🚀 ~ file: homepage.jsx ~ line 130 ~ f_color ~ price", prices)
-    console.log(prices.value)
-    let el = `${parseFloat(data[i]['1d'].price_change_pct)}`;
-        if(el < 0) {
-          prices.style.color = "green";
-        } else {
-          prices.style.color = "red";
-        }
-  }
-
+  /**function for handling like button on click event**/
   function Toggle(i) {
   
     let likeButton = document.getElementById(`like-button${i}`)
     console.log(likeButton)
+    console.log(likeButton.value)
 
     if (likeButton.style.color == "grey") {
-      likeButton.style.color = "red"}
+      likeButton.style.color = "red";
+      // fetch("/favorite_coin")
+      // .then(response => console.log(response))
+        $.post("/favorite_coin", {"name": likeButton.value}, response => {
+        console.log(response)
+      })
+    }
     else{
       likeButton.style.color = "grey"
     }
   }
 
+  /**function for creating the watchlist table**/
   function favTable(data){
     let favData = [];
     

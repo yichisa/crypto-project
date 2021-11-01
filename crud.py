@@ -34,7 +34,15 @@ def get_user_by_email(email):
 def create_coin(name):
     """Create and return a new coin."""
 
-    coin = Coin(name=name)
+    coin = Coin(
+        name=name,
+        # price=price,
+        # market_cap=market_cap,
+        # volume=volume,
+        # all_time_high=all_time_high,
+        # circulating_supply=circulating_supply,
+        # change=change
+        )
 
     db.session.add(coin)
     db.session.commit()
@@ -52,18 +60,32 @@ def get_coin_by_id(coin_id):
 
     return Coin.query.get(coin_id)
 
+def get_coin_by_name(name):
+    """Return a coin by name."""
 
+    return Coin.query.get(name)
 
-def create_favorite(user, coin, favorite):
+def create_favorite(user_id, coin_id, name):
     """Create and return a new favorite."""
 
-    favorite = Favorite(user=user, coin=coin, favorite=favorite)
+    favorite = Favorite(user_id=user_id, coin_id=coin_id, name=name)
 
     db.session.add(favorite)
     db.session.commit()
 
     return favorite
 
+    # find coin by symbol
+
+def get_favorite_by_id(favorite_id):
+    """Return a favorite by primary key."""
+
+    return Favorite.query.get(favorite_id)
+
+
+def get_users_favorites_by_user_id(user_id):
+
+    return Favorite.query.filter(Favorite.user_id == user_id).all()
 
 
 if __name__ == "__main__":

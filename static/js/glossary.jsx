@@ -1,5 +1,5 @@
-
 function Glossary(props) {
+    /**fetching data from the glossary data route**/
     $.get('/glossarydata', response => {
       let glossaryArray = response.data;
       buildTab(glossaryArray)
@@ -23,20 +23,26 @@ function Glossary(props) {
       </React.Fragment>
     );
 }
-function searchGlossary(value, data){
-    let filteredData = []
 
-    for(let i=0; i<data.length; i++){
-      value = value.toLowerCase()
-      let name = data[i].name.toLowerCase()
-      let symbol = data[i].symbol.toLowerCase()
+// function searchGlossary(value, data){
+//     let filteredData = []
 
-      if (name.includes(value)){
-        filteredData.push(data[i])
-      }
-    }
-    return filteredData
-  }
+//     for(let i=0; i<data.length; i++){
+//       value = value.toLowerCase()
+//       let name = data[i].name.toLowerCase()
+//       let symbol = data[i].symbol.toLowerCase()
+
+//       if (name.includes(value)){
+//         filteredData.push(data[i])
+//       }
+//     }
+//     return filteredData
+//   }
+
+/**building tabs based on alphabetical order
+ * corresponding glossary contents will be loaded
+ * based on on-click events
+ */
 
 function buildTab(data) {
     let tab = document.getElementById('tabs'); 
@@ -51,7 +57,6 @@ function buildTab(data) {
         
         const defObj = data[i][tabHeader];
         for (const [key, value] of Object.entries(defObj)) {
-            // console.log(`${key}: ${value}`);
             const term = `<div id="${tabHeader}" data-tab-content class="active ${tabHeader}"><h3 style="font-size:3rem">${key}</h3><p>${value}</p><br></div>`;
             definition.innerHTML += term
         }
@@ -59,7 +64,8 @@ function buildTab(data) {
     
     const tabs = document.querySelectorAll('[data-tab-target]')
     const tabContents = document.querySelectorAll('[data-tab-content]')
-
+    
+    /**loading tab on-click events**/
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = document.querySelectorAll(tab.dataset.tabTarget);

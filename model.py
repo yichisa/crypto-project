@@ -28,6 +28,12 @@ class Coin(db.Model):
 
     coin_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String, nullable = False)
+    # price = db.Column(db.String)
+    # market_cap = db.Column(db.String)
+    # volume = db.Column(db.String)
+    # all_time_high = db.Column(db.String)
+    # circulating_supply = db.Column(db.String)
+    # change = db.Column(db.String)
 
 
     def __repr__(self):

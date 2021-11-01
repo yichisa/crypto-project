@@ -105,6 +105,15 @@ def show_user(user_id):
 
     return render_template("user_details.html", user=user)
 
+@app.route("/favorite_coin", methods=["POST"])
+def favorite_a_coin():
+    """favorite a coin"""
+
+    fav_coin = request.form.get("name")
+    # favorite = crud.create_favorite(session['user_id'], coin_id=coin_id, name=name)
+
+    return flash(f" You've added {fav_coin} to your favorite!")
+
 
 @app.route("/register", methods=["POST"])
 def register_user():
@@ -141,26 +150,8 @@ def process_login():
     return redirect("/")
 
 
-@app.route("/coins/<coin_id>/ratings", methods=["POST"])
-def create_favorite(coin_id):
-    """Create a new favorite for the coin."""
-
-    logged_in_email = session.get("user_email")
-    favorite_selection = request.form.get("favorite")
-
-    if logged_in_email is None:
-        flash("You must log in to like a coin.")
-    else:
-        user = crud.get_user_by_email(logged_in_email)
-        coin = crud.get_coin_by_id(coin_id)
-
-        crud.create_favorite(user, coin, favorite_selection)
-
-        flash(f"You added this coin to your favorite list.")
-
-    return redirect(f"/coins/{coin_id}")
 
 
 if __name__ == "__main__":
     connect_to_db(app)
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", port=8000, debug=True)

@@ -33,6 +33,7 @@ li {
 	font-size: medium;
 	text-align: center;
 	align-items: center;
+	vertical-align: middle;
 }
 
 h1 {
@@ -50,6 +51,7 @@ h2 {
 #column-name {
 	font-size: larger;
 	text-align: center;
+	vertical-align: middle;
 }
 
 
@@ -62,6 +64,7 @@ h2 {
 #app {
 	background: #302f36;
 	margin: 0px;
+	vertical-align: middle;
 }
 
 body{
@@ -70,6 +73,8 @@ body{
 	font-family: sans-serif;
 	background: url(bg.jpeg) no-repeat;
 	background-size: cover;
+	vertical-align: middle;
+
 }
 
 .login-box{
@@ -176,7 +181,7 @@ body{
 
 #tabHeader {
 	margin: 0px;
-	padding-left: 0px;
+	padding-left: 10px;
 	text-align: center;
 }
 
@@ -245,10 +250,6 @@ p {
 
 }
 
-/* .price {
-	color: red;
+.table>tbody>tr {
+	vertical-align: middle;
 }
-
-.price.green {
-	color: #33ff3c;
-} */
