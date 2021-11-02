@@ -1,8 +1,5 @@
 # LIVE COIN TRACKER
-Live Coin Tracker is a price tracking app for top 100 crypto coins. The app shows price, market cap, volume, all-time-high, circulating supply and 24H change for each coin.
-
-<br /> 
-Live Coin Tracker is built with Python Flask on the backend with a PostgreSQL database, and Javascript/React on the frontend along with HTML/CSS and Bootstrap.
+Live Coin Tracker is a price tracking app for top 100 crypto coins. The app shows price, market cap, volume, all-time-high, circulating supply and 24H change for each coin. Live Coin Tracker is built with Python Flask on the backend with a PostgreSQL database, and Javascript/React on the frontend along with HTML/CSS and Bootstrap.
 
 ## Features
 
