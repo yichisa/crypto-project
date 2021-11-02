@@ -7,18 +7,23 @@ Live Coin Tracker is a price tracking app for top 100 crypto coins. The app show
 2. A user can register an account and login
 3. A user can search for a particular coin
 
-![search](https://user-images.githubusercontent.com/88920819/139940772-aa7b219f-e2c4-411f-a44d-0f0896740979.gif)
+![5sql85](https://user-images.githubusercontent.com/88920819/139948854-8edd3de2-dd2a-4188-ad5b-12423e6980db.gif)
 
 5. A user can favorite a coin
 
-![like feature](https://user-images.githubusercontent.com/88920819/139940992-78ef8e76-60eb-44b8-a8db-d20017e39c16.gif)
+![5sqle6](https://user-images.githubusercontent.com/88920819/139948810-870b5805-d016-4323-a739-e7d2f9a734f3.gif)
 
 7. A user can sort a coin based on Price, Market Cap, and All Time High
 
-![sort](https://user-images.githubusercontent.com/88920819/139940902-aa4919ce-7eba-475d-b1f9-be03508885a4.gif)
+![5sqlqe](https://user-images.githubusercontent.com/88920819/139948750-fda57606-0ac1-4641-b708-3baa2dbb3a88.gif)
 
 8. A user can assess top 24 most trusted exchange platforms if they want to trade coins
+
+![5sqlt8](https://user-images.githubusercontent.com/88920819/139948675-eb8e80e0-238c-42c3-a760-d69fbfd8ac20.gif)
+
 10. There is a a Glossary page - a user can study basic terminology for blockchain technology.
+
+![5sqm84](https://user-images.githubusercontent.com/88920819/139948613-59f3e71b-9f63-4b0d-b303-e7cfdfe4d5df.gif)
 
 
 ## Tech Stack
