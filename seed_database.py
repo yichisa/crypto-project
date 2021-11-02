@@ -35,7 +35,7 @@ coins_in_db = []
 
 for coin in coin_data:
     name = coin["name"]
-    coin_id=coin["coin_id"]
+    # coin_id=coin["coin_id"]
     # price=["price"],
     # market_cap=["market_cap"],
     # volume=["volume"],
@@ -43,7 +43,7 @@ for coin in coin_data:
     # circulating_supply=["circulating_supply"],
     # change=change
 
-    db_coin = crud.create_coin(name, coin_id)
+    db_coin = crud.create_coin(name)
     coins_in_db.append(db_coin)
 
 print(coins_in_db)
