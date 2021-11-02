@@ -8,7 +8,7 @@ Live Coin Tracker is a price tracking app for top 100 crypto coins. The app show
 3. A user can search for a particular coin
 4. A user can favorite a coin
 5. A user can sort a coin based on Price, Market Cap, and All Time High
-<a href="https://imgflip.com/gif/5sq9xr">via Imgflip</a>
+![cnote](https://user-images.githubusercontent.com/88920819/139937533-639e5393-e67f-49ac-95fb-78d14cccbc6b.gif)
 6. A user can assess top 24 most trusted exchange platforms if they want to trade coins
 
 7. There is a a Glossary page - a user can study basic terminology for blockchain technology.
