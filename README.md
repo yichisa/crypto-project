@@ -1,20 +1,33 @@
 # LIVE COIN TRACKER
-Live Coin Tracker is a price tracking app for top 100 crypto coins. The app shows price, market cap, volume, all-time-high, circulating supply and 24H change for each coin.
-
-<br /> 
-Live Coin Tracker is built with Python Flask on the backend with a PostgreSQL database, and Javascript/React on the frontend along with HTML/CSS and Bootstrap.
+Live Coin Tracker is a price tracking app for top 100 crypto coins. The app shows price, market cap, volume, all-time-high, circulating supply and 24H change for each coin. Live Coin Tracker is built with Python Flask on the backend with a PostgreSQL database, and Javascript/React on the frontend along with HTML/CSS and Bootstrap.
 
 ## Features
 
 1. A user can view basic stats of a coin 
 2. A user can register an account and login
-3. A user can search for a particular coin
-4. A user can favorite a coin
-5. A user can sort a coin based on Price, Market Cap, and All Time High
-<div style="width:360px;max-width:100%;"><div style="height:0;padding-bottom:53.33%;position:relative;"><iframe width="360" height="192" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/5sq9xr"></iframe></div><p><a href="https://imgflip.com/gif/5sq9xr">via Imgflip</a></p></div>
-6. A user can assess top 24 most trusted exchange platforms if they want to trade coins
 
-7. There is a a Glossary page - a user can study basic terminology for blockchain technology.
+![5sql85](https://user-images.githubusercontent.com/88920819/139948854-8edd3de2-dd2a-4188-ad5b-12423e6980db.gif)
+
+4. A user can search for a particular coin
+
+![5sqlqe](https://user-images.githubusercontent.com/88920819/139948750-fda57606-0ac1-4641-b708-3baa2dbb3a88.gif)
+
+5. A user can favorite a coin
+
+![5sqle6](https://user-images.githubusercontent.com/88920819/139948810-870b5805-d016-4323-a739-e7d2f9a734f3.gif)
+
+7. A user can sort a coin based on Price, Market Cap, and All Time High
+
+![5sqlt8](https://user-images.githubusercontent.com/88920819/139948675-eb8e80e0-238c-42c3-a760-d69fbfd8ac20.gif)
+
+8. A user can assess top 24 most trusted exchange platforms if they want to trade coins
+
+![5sqn8l](https://user-images.githubusercontent.com/88920819/139949372-ac18642f-d65f-4856-b6a0-ea6612dc443e.gif)
+
+10. There is a a Glossary page - a user can study basic terminology for blockchain technology.
+
+![5sqm84](https://user-images.githubusercontent.com/88920819/139948613-59f3e71b-9f63-4b0d-b303-e7cfdfe4d5df.gif)
+
 
 ## Tech Stack
 Languages:
@@ -47,4 +60,5 @@ APIs:
 9. Runun `python3 seed_database.py`
 10. Launch the server with `python3 server.py`
 11. You will then be able to access it at localhost:8000.
+
 
